@@ -5,6 +5,13 @@ html {
   background-color: #1a1a1a;
   /*transition: background-color 0.25s;*/
   font-family: HelveticaNeue-UltraLight, 'Helvetica Neue UltraLight', 'Helvetica Neue', Open-Light, sans-serif;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: default;
 }
 
 .green { background-color: #6CC988; } /* green */
@@ -18,7 +25,16 @@ html {
 }
 
 .dark-text {
-  color: rgba(20, 20, 20, 0.5);
+  color: rgba(128, 128, 128, 0.5);
+  font-weight: lighter;
+}
+
+.green .dark-text,
+.blue .dark-text,
+.red .dark-text,
+.yellow .dark-text
+.purple .dark-text {
+  color: rgba(20, 20, 20, 0.8);
 }
 
 #clock {
@@ -50,14 +66,23 @@ html {
   width: 50%;
   height: 250px;
   resize: none;
+  color: white;
+  background-color: #0a0a0a;
   border-color: transparent;
+  padding: 8px;
   border-radius: 3px;
+  user-select:;
 }
 #note:focus {
   outline: 0;
 }
 .green #note { background-color: #3EA85E; } /* green */
+.green #note::selection { background-color: #308249; } /* green */
 .blue #note { background-color: #3EA4A8; } /* blue */
+.blue #note::selection { background-color: #308082; } /* blue */
 .red #note { background-color: #A65E3F; } /* red */
+.red #note::selection { background-color: #814931; } /* red */
 .yellow #note { background-color: #A39343; } /* yellow */
+.yellow #note::selection { background-color: #7F7234; } /* yellow */
 .purple #note { background-color: #7341A4; } /* purple */
+.purple #note::selection { background-color: #593380; } /* purple */
