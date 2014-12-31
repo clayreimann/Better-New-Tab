@@ -1,0 +1,9 @@
+This is a chrome extension that replaces the default
+new tab page with a clock, date, your current GPS coords
+and a place to take notes.
+
+Future features might include:
+* a quick way to execute JS snippets
+* a graph showing where in the day/night loop you are
+* your weather
+* quick launchers for sites
