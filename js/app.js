@@ -29,8 +29,7 @@ function loadSettings() {
   var backgroundColor = localStorage.getItem('backgroundColor');
 
   if (backgroundColor) {
-    document.getElementsByTagName('html')[0].classList.add(backgroundColor);
-    document.querySelectorAll('option[value='+backgroundColor+']')[0].setAttribute('selected', 'selected');
+    document.getElementsByTagName('body')[0].classList.add(backgroundColor);
   }
 }
 function toggleSettings(e) {
@@ -43,10 +42,18 @@ function toggleSettings(e) {
     settingsElem.style.display = 'none';
   }
 }
+function changeTheme(toTheme) {
+  var body = document.getElementsByTagName('body')[0];
+  localStorage.setItem('backgroundColor', toTheme);
+  if (body.classList.length) {
+    body.classList.remove(body.classList[0]);
+  }
+  body.classList.add(toTheme);
+}
 
 // DOM Ready
-document.addEventListener('DOMContentLoaded', function(){
-  var hoursElmt, minutesElmt, secondsElmt, dateElmt, date
+// document.addEventListener('DOMContentLoaded', function(){
+  var hoursElmt, minutesElmt, secondsElmt, dateElmt, date, tags
     , Geo = navigator.geolocation
     , settingsElem = document.getElementById('settings')
     ;
@@ -89,16 +96,14 @@ document.addEventListener('DOMContentLoaded', function(){
 
   // settings stuff
   loadSettings();
-
-  document.getElementById('background-color').addEventListener('change', function(e) {
-    var html = document.getElementsByTagName('html')[0];
-    localStorage.setItem('backgroundColor', this.value);
-    if (html.classList.length) {
-      html.classList.remove(html.classList[0]);
-    }
-    html.classList.add(this.value);
-  });
+  tags = document.getElementsByTagName('span');
+  for(i = 0; i < tags.length; i++) {
+    tag = tags[i];
+    tag.addEventListener('click', function(e) {
+      changeTheme(this.dataset.theme);
+    });
+  }
 
   document.getElementById('settings-done').addEventListener('click', toggleSettings);
   document.getElementById('settings-open').addEventListener('click', toggleSettings);
-});
+// });
