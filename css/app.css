@@ -91,3 +91,7 @@ body {
 .yellow #note::selection { background-color: #7F7234; } /* yellow */
 .purple #note { background-color: #7341A4; } /* purple */
 .purple #note::selection { background-color: #593380; } /* purple */
+
+#print-container {
+  display: none;
+}

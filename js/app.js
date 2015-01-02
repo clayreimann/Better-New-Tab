@@ -3,7 +3,7 @@
  *
  */
 function setHoursOf(date, intoElement) {
-  intoElement.innerHTML = forTimeDisplay(date.getHours() % 12);
+  intoElement.innerHTML = forTimeDisplay(date.getHours() > 12 ? date.getHours() % 12 : date.getHours());
 }
 function setMinutesOf(date, intoElement) {
   intoElement.innerHTML = forTimeDisplay(date.getMinutes());
@@ -51,59 +51,59 @@ function changeTheme(toTheme) {
   body.classList.add(toTheme);
 }
 
-// DOM Ready
-// document.addEventListener('DOMContentLoaded', function(){
-  var hoursElmt, minutesElmt, secondsElmt, dateElmt, date, tags
-    , Geo = navigator.geolocation
-    , settingsElem = document.getElementById('settings')
-    ;
+var hoursElmt, minutesElmt, secondsElmt, dateElmt, date, tags
+  , Geo = navigator.geolocation
+  , settingsElem = document.getElementById('settings')
+  ;
 
-  date = new Date();
+date = new Date();
 
-  dateElmt = document.getElementById('date');
-  dateElmt.innerHTML = (new Intl.DateTimeFormat('en-US', {
-    "weekday": "long",
-    "month": "long",
-    "day": "numeric"
-  })).format(date);
+dateElmt = document.getElementById('date');
+dateElmt.innerHTML = (new Intl.DateTimeFormat('en-US', {
+  "weekday": "long",
+  "month": "long",
+  "day": "numeric"
+})).format(date);
 
-  hoursElmt = document.getElementById('hours');
-  minutesElmt = document.getElementById('minutes');
-  secondsElmt = document.getElementById('seconds');
+hoursElmt = document.getElementById('hours');
+minutesElmt = document.getElementById('minutes');
+secondsElmt = document.getElementById('seconds');
 
-  setHoursOf(date, hoursElmt);
-  setMinutesOf(date, minutesElmt);
-  // setSecondsOf(date, secondsElmt);
+setHoursOf(date, hoursElmt);
+setMinutesOf(date, minutesElmt);
+// setSecondsOf(date, secondsElmt);
 
-  setInterval(function() {
-    var now = new Date();
+setInterval(function() {
+  var now = new Date();
 
-    setHoursOf(now, hoursElmt);
-    setMinutesOf(now, minutesElmt);
-    // setSecondsOf(now, secondsElmt);
-  }, 150);
+  setHoursOf(now, hoursElmt);
+  setMinutesOf(now, minutesElmt);
+  // setSecondsOf(now, secondsElmt);
+}, 150);
 
-  // geo stuff for weather
-  Geo.getCurrentPosition(function(position) {
-    var locationElmt = document.getElementById('location');
-    var lat, lon;
+// geo stuff for weather
+Geo.getCurrentPosition(function(position) {
+  var locationElmt = document.getElementById('location');
+  var lat, lon;
 
-    lat = position.coords.latitude.toFixed(2);
-    lon = position.coords.longitude.toFixed(2);
+  lat = position.coords.latitude.toFixed(2);
+  lon = position.coords.longitude.toFixed(2);
 
-    locationElmt.innerHTML = "" + lat + ", " + lon;
-  })
+  locationElmt.innerHTML = "" + lat + ", " + lon;
+})
 
-  // settings stuff
-  loadSettings();
-  tags = document.getElementsByTagName('span');
-  for(i = 0; i < tags.length; i++) {
-    tag = tags[i];
-    tag.addEventListener('click', function(e) {
-      changeTheme(this.dataset.theme);
-    });
-  }
+// settings stuff
+loadSettings();
+tags = document.getElementsByTagName('span');
+for(i = 0; i < tags.length; i++) {
+  tag = tags[i];
+  tag.addEventListener('click', function(e) {
+    changeTheme(this.dataset.theme);
+  });
+}
 
-  document.getElementById('settings-done').addEventListener('click', toggleSettings);
-  document.getElementById('settings-open').addEventListener('click', toggleSettings);
-// });
+document.getElementById('settings-done').addEventListener('click', toggleSettings);
+document.getElementById('settings-open').addEventListener('click', toggleSettings);
+document.getElementById('note').addEventListener('keyup', function(e) {
+  document.getElementById('print').innerHTML = this.value;
+});
