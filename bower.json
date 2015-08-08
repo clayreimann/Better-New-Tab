@@ -1,0 +1,23 @@
+{
+  "name": "Better-New-Tab",
+  "version": "0.5.0",
+  "homepage": "https://github.com/clayreimann/Better-New-Tab",
+  "authors": [
+    "Clay Reimann <clayreimann@gmail.com>"
+  ],
+  "description": "A better new tab page for chrome",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "moment": "~2.10.6",
+    "pure": "~0.6.0",
+    "CodeMirror": "~5.5.0",
+    "js-beautify": "~1.5.10"
+  }
+}
