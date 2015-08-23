@@ -21,15 +21,7 @@ setTimeout(function() {
   }
 }, 0);
 
-document.getElementById('note').addEventListener('keyup', function(e) {
-  document.getElementById('print').innerHTML = this.value;
-});
 
-
-// TODO:
-// * add panel.js to change syntax
-// * add settings to change theme
-// * add beautify buttons for js/html/css/JSON
 var textArea = document.getElementById('note');
 var editor = CodeMirror.fromTextArea(textArea, {
   mode: 'markdown',
@@ -37,6 +29,7 @@ var editor = CodeMirror.fromTextArea(textArea, {
 
   tabSize: 2,
   indentUnit: 2,
+  cursorScrollMargin: 3,
 
   dragDrop: false,
   lineNumbers: true,
@@ -45,4 +38,17 @@ var editor = CodeMirror.fromTextArea(textArea, {
   matchBrackets: true,
   autoCloseBrackets: true,
   extraKeys: {"Enter": "newlineAndIndentContinueMarkdownList"}
+});
+
+editor.on('changes', function(event) {
+  doc = editor.getDoc();
+  var mode = doc.getMode();
+  var text = doc.getValue();
+  document.getElementById('print').innerHTML = editor.getDoc().getValue();
+
+  sessions[sessionKey] = {
+    mode: mode,
+    text: text
+  };
+  localStorage.setItem('sessions', JSON.stringify(sessions, null, 2));
 });

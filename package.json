@@ -1,0 +1,32 @@
+{
+  "name": "Better-New-Tab",
+  "version": "0.1.0",
+  "description": "A new tab page for chrome with features for developers",
+  "main": "-",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/clayreimann/Better-New-Tab.git"
+  },
+  "keywords": [
+    "new",
+    "tab",
+    "chrome",
+    "extensions"
+  ],
+  "author": "Clay Reimann",
+  "license": "DBAD",
+  "bugs": {
+    "url": "https://github.com/clayreimann/Better-New-Tab/issues"
+  },
+  "homepage": "https://github.com/clayreimann/Better-New-Tab",
+  "dependencies": {
+    "del": "^1.2.1",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^2.3.1",
+    "gulp-less": "^3.0.3"
+  }
+}
