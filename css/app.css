@@ -39,31 +39,12 @@ body {
 #clock {
   font-size: 500%;
   text-align: center;
-  margin-top: 20vh;
+  margin-top: 10vh;
   letter-spacing: -5px;
 }
 
-#settings {
-  top: 20%;
-  bottom: 20%;
-  left: 20%;
-  right: 20%;
-  position: absolute;
-  background-color: white;
-  border-radius: 8px;
-  display: none;
-}
-#settings span.swatch {
-  display: inline-block;
-  width: 75px;
-  height: 75px;
-}
-#settings-done, #settings-open {
-  font-size: 0.5em;
-  text-decoration: none;
-  position: absolute;
-  bottom: 5px;
-  right: 5px;
+#notes {
+  margin-top: 2vh;
 }
 
 #note {
@@ -92,6 +73,39 @@ body {
 .purple #note { background-color: #7341A4; } /* purple */
 .purple #note::selection { background-color: #593380; } /* purple */
 
+#settings {
+  top: 20%;
+  bottom: 20%;
+  left: 20%;
+  right: 20%;
+  position: absolute;
+  background-color: white;
+  border-radius: 8px;
+  display: none;
+  z-index: 999;
+  box-shadow: 0 0 50px black;
+}
+#settings span.swatch {
+  display: inline-block;
+  width: 75px;
+  height: 75px;
+}
+#settings-done, #settings-open {
+  font-size: 0.5em;
+  text-decoration: none;
+  position: absolute;
+  bottom: 1em;
+  right: 1em;
+}
+
 #print-container {
   display: none;
+}
+
+.CodeMirror {
+  font-size: 1rem;
+  text-align: left;
+  width: 50%;
+  min-width: 600px;
+  margin: 0 auto;
 }
