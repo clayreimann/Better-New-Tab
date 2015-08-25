@@ -1,0 +1,227 @@
+@import "includes/vars";
+@import "includes/colors";
+
+body {
+  font-size: 2rem;
+  text-align: center;
+  font-weight: lighter;
+  background-color: @dark-background;
+  transition: background-color 0.25s;
+  font-family: 'Lato', sans-serif;
+  cursor: default;
+}
+
+#clock, #location, #settings {
+  user-select: none;
+}
+
+#clock {
+  font-size: 500%;
+  text-align: center;
+  margin-top: 10vh;
+  letter-spacing: -5px;
+}
+
+#settings {
+  top: @settings-margin;
+  left: @settings-margin;
+  right: @settings-margin;
+  bottom: @settings-margin;
+  position: absolute;
+
+  background-color: white;
+  border-radius: 8px;
+  display: none;
+  z-index: 999;
+  box-shadow: 0 0 50px black;
+
+  .swatch {
+    display: inline-block;
+    width: 75px;
+    height: 75px;
+  }
+}
+
+#settings-done, #settings-open {
+  font-size: 0.5em;
+  text-decoration: none;
+  position: absolute;
+  right: 1em;
+  bottom: 1em;
+}
+
+#notes {
+  margin-top: 2vh;
+
+  .CodeMirror {
+    display: inline-block;
+  }
+
+  .sidebar {
+    height: 300px;
+    overflow-y: auto;
+    vertical-align: top;
+    display: inline-block;
+
+    h3 {
+      margin: 0;
+      font-size: 1.2rem;
+      font-weight: normal;
+      border-bottom: thin solid @light-white;
+      margin-bottom: 5px;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 0;
+      font-size: 1rem;
+      list-style: none;
+      text-align: left;
+
+      li {
+        position: relative;
+        padding: 5px 30px 0 0;
+
+        .icon-delete {
+          display: none;
+        }
+
+        &:hover .icon-delete {
+          display: block;
+          position: absolute;
+          right: 10px;
+          top: 3px;
+          width: 10px;
+          height: 10px;
+          text-align: center;
+          color: white;
+
+          &:hover {
+            color: @dark-background;
+          }
+        }
+      }
+    }
+  }
+}
+
+#print-container {
+  display: none;
+}
+
+/////////////
+// Theming //
+/////////////
+.light-text {
+  color: @light-white;
+}
+
+.dark-text {
+  color: rgba(128, 128, 128, 0.5);
+  font-weight: lighter;
+}
+
+.dark {
+  background-color: @dark-background;
+  & #notes ul li:hover {
+    background: lighten(@dark-background, @shading-hover);
+  }
+
+  & .dark-text {
+    color: darken(@dark-background, @shading-text);
+  }
+  & div.CodeMirror-selected {
+    background: fade(darken(@dark-background, @shading-text), 30%) !important;
+  }
+}
+.green {
+  background-color: @green-background;
+  & #notes ul li:hover {
+    background: lighten(@green-background, @shading-hover);
+  }
+  & .dark-text {
+    color: darken(@green-background, @shading-text);
+  }
+  & div.CodeMirror-selected {
+    background: fade(darken(@green-background, @shading-text), 30%) !important;
+  }
+}
+.blue {
+  background-color: @blue-background;
+  & #notes ul li:hover {
+    background: lighten(@blue-background, @shading-hover);
+  }
+  & .dark-text {
+    color: darken(@blue-background, @shading-text);
+  }
+  & div.CodeMirror-selected {
+    background: fade(darken(@blue-background, @shading-text), 30%) !important;
+  }
+}
+.red {
+  background-color: @red-background;
+  & #notes ul li:hover {
+    background: lighten(@red-background, @shading-hover);
+  }
+  & .dark-text {
+    color: darken(@red-background, @shading-text);
+  }
+  & div.CodeMirror-selected {
+    background: fade(darken(@red-background, @shading-text), 30%) !important;
+  }
+}
+.yellow {
+  background-color: @yellow-background;
+  & #notes ul li:hover {
+    background: lighten(@yellow-background, @shading-hover);
+  }
+  & .dark-text {
+    color: darken(@yellow-background, @shading-text);
+  }
+  & div.CodeMirror-selected {
+    background: fade(darken(@yellow-background, @shading-text), 30%) !important;
+  }
+}
+.purple {
+  background-color: @purple-background;
+  & #notes ul li:hover {
+    background: lighten(@purple-background, @shading-hover);
+  }
+  & .dark-text {
+    color: darken(@purple-background, @shading-text);
+  }
+  & div.CodeMirror-selected {
+    background: fade(darken(@purple-background, @shading-text), 30%) !important;
+  }
+}
+
+// .green #note { background-color: #3EA85E; } /* green */
+// .green #note::selection { background-color: #308249; } /* green */
+// .blue #note { background-color: #3EA4A8; } /* blue */
+// .blue #note::selection { background-color: #308082; } /* blue */
+// .red #note { background-color: #A65E3F; } /* red */
+// .red #note::selection { background-color: #814931; } /* red */
+// .yellow #note { background-color: #A39343; } /* yellow */
+// .yellow #note::selection { background-color: #7F7234; } /* yellow */
+// .purple #note { background-color: #7341A4; } /* purple */
+// .purple #note::selection { background-color: #593380; } /* purple */
+
+/////////////////////////////////
+//   Code Mirror - overrides   //
+/////////////////////////////////
+
+.CodeMirror {
+  font-size: 1rem;
+  text-align: left;
+  width: 50%;
+  min-width: 600px;
+  margin: 0 auto;
+
+  .CodeMirror-gutters {
+    border-right: solid thin #8d8687;
+  }
+
+  .CodeMirror-linenumber {
+    text-align: center;
+  }
+}
