@@ -15,24 +15,20 @@ updateDateTime();
 setInterval(updateDateTime, 150);
 
 function clickSessionItem(e) {
-  console.log('clickSessionItem');
   var session = e.target.dataset['session'];
 
   editor.getDoc().setValue(sessions[session].text);
 }
 
 function removeSessionItem(e) {
-  console.log('removeSessionItem');
   var parent = e.target.parentElement;
   var session = parent.dataset['session'];
 
   delete sessions[session];
+  parent.remove();
   saveSessions();
 
-  parent.remove();
-
-
-  e.preventDefault();
+  e.stopPropagation();
 }
 
 function buildTabItem(session) {
@@ -81,7 +77,7 @@ setTimeout(function() {
 
 var textArea = document.getElementById('note');
 var editor = CodeMirror.fromTextArea(textArea, {
-  mode: 'markdown',
+  mode: 'javascript',
   theme: 'paraiso-light',
 
   tabSize: 2,

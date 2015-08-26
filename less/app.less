@@ -42,8 +42,24 @@ body {
   }
 }
 
+#feedback {
+  font-size: 1rem;
+  text-align: left;
+  width: 5rem;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  left: 1em;
+  bottom: 1em;
+
+  list-style: none;
+  li:before {
+      content: "\2022\0009"; // bullet + tab (literal characters aren't interpreted as utf-8 for some reason...)
+  }
+}
+
 #settings-done, #settings-open {
-  font-size: 0.5em;
+  font-size: 1rem;
   text-decoration: none;
   position: absolute;
   right: 1em;
@@ -58,6 +74,7 @@ body {
   }
 
   .sidebar {
+    width: 130px;
     height: 300px;
     overflow-y: auto;
     vertical-align: top;
@@ -80,7 +97,7 @@ body {
 
       li {
         position: relative;
-        padding: 5px 30px 0 0;
+        padding: 5px 30px 5px 5px;
 
         .icon-delete {
           display: none;
@@ -121,90 +138,40 @@ body {
   font-weight: lighter;
 }
 
-.dark {
-  background-color: @dark-background;
+.themeRules(@base-color) {
+  background-color: @base-color;
   & #notes ul li:hover {
-    background: lighten(@dark-background, @shading-hover);
+    background: lighten(@base-color, @shading-hover);
   }
-
   & .dark-text {
-    color: darken(@dark-background, @shading-text);
+    color: darken(@base-color, @shading-text);
+  }
+  & li:before {
+    color: darken(@base-color, @shading-text);
   }
   & div.CodeMirror-selected {
-    background: fade(darken(@dark-background, @shading-text), 30%) !important;
+    background: fade(darken(@base-color, @shading-text), 30%) !important;
   }
+}
+
+.dark {
+  .themeRules(@dark-background);
 }
 .green {
-  background-color: @green-background;
-  & #notes ul li:hover {
-    background: lighten(@green-background, @shading-hover);
-  }
-  & .dark-text {
-    color: darken(@green-background, @shading-text);
-  }
-  & div.CodeMirror-selected {
-    background: fade(darken(@green-background, @shading-text), 30%) !important;
-  }
+  .themeRules(@green-background);
 }
 .blue {
-  background-color: @blue-background;
-  & #notes ul li:hover {
-    background: lighten(@blue-background, @shading-hover);
-  }
-  & .dark-text {
-    color: darken(@blue-background, @shading-text);
-  }
-  & div.CodeMirror-selected {
-    background: fade(darken(@blue-background, @shading-text), 30%) !important;
-  }
+  .themeRules(@blue-background);
 }
 .red {
-  background-color: @red-background;
-  & #notes ul li:hover {
-    background: lighten(@red-background, @shading-hover);
-  }
-  & .dark-text {
-    color: darken(@red-background, @shading-text);
-  }
-  & div.CodeMirror-selected {
-    background: fade(darken(@red-background, @shading-text), 30%) !important;
-  }
+  .themeRules(@red-background);
 }
 .yellow {
-  background-color: @yellow-background;
-  & #notes ul li:hover {
-    background: lighten(@yellow-background, @shading-hover);
-  }
-  & .dark-text {
-    color: darken(@yellow-background, @shading-text);
-  }
-  & div.CodeMirror-selected {
-    background: fade(darken(@yellow-background, @shading-text), 30%) !important;
-  }
+  .themeRules(@yellow-background);
 }
 .purple {
-  background-color: @purple-background;
-  & #notes ul li:hover {
-    background: lighten(@purple-background, @shading-hover);
-  }
-  & .dark-text {
-    color: darken(@purple-background, @shading-text);
-  }
-  & div.CodeMirror-selected {
-    background: fade(darken(@purple-background, @shading-text), 30%) !important;
-  }
+  .themeRules(@purple-background);
 }
-
-// .green #note { background-color: #3EA85E; } /* green */
-// .green #note::selection { background-color: #308249; } /* green */
-// .blue #note { background-color: #3EA4A8; } /* blue */
-// .blue #note::selection { background-color: #308082; } /* blue */
-// .red #note { background-color: #A65E3F; } /* red */
-// .red #note::selection { background-color: #814931; } /* red */
-// .yellow #note { background-color: #A39343; } /* yellow */
-// .yellow #note::selection { background-color: #7F7234; } /* yellow */
-// .purple #note { background-color: #7341A4; } /* purple */
-// .purple #note::selection { background-color: #593380; } /* purple */
 
 /////////////////////////////////
 //   Code Mirror - overrides   //

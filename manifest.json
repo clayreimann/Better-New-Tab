@@ -1,7 +1,7 @@
 {
   "name": "Better New Tab",
   "description": "Override the new tab page with a useful page",
-  "version": "0.3",
+  "version": "1.0",
   "incognito": "split",
   "chrome_url_overrides": {
     "newtab": "tab-page.html"
@@ -14,5 +14,10 @@
     "storage",
     "notifications"
   ],
-  "manifest_version": 3
+  "manifest_version": 3,
+  "icons": {
+    "32": "img/cloud-laptop-32.png",
+    "48": "img/cloud-laptop-48.png",
+    "128": "img/cloud-laptop-128.png"
+  }
 }
