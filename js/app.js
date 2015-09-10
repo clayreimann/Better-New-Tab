@@ -64,13 +64,14 @@ function saveSessions() {
 }
 
 // load data from background page
-setTimeout(function() {
+setTimeout(function getLocation() {
   var location = chrome.extension.getBackgroundPage().getLocation();
 
   if (location) {
     locElmt.innerHTML = location.lat + ', ' + location.lon;
   } else {
     locElmt.innerHTML = '?, ?';
+    setTimeout(getLocation, 1000);
   }
 }, 0);
 
@@ -78,7 +79,7 @@ setTimeout(function() {
 var textArea = document.getElementById('note');
 var editor = CodeMirror.fromTextArea(textArea, {
   mode: 'javascript',
-  theme: 'paraiso-light',
+  theme: 'solarized',
 
   tabSize: 2,
   indentUnit: 2,
