@@ -2,6 +2,7 @@
  *  Settings functions
  *
  */
+var START_TIME = new Date();
 var body = document.getElementsByTagName('body')[0];
 var tags = document.getElementsByTagName('span');
 var settingsElem = document.getElementById('settings');
